@@ -1,0 +1,7 @@
+# Ignora a pasta do ambiente virtual (substitua pelo nome que você usou)
+analise_env/
+
+# Ignora caches e arquivos temporários do Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
