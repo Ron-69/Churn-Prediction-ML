@@ -35,16 +35,22 @@ O projeto seguiu o fluxo padrão de Data Science, com foco em tratar o desbalanc
 
 *(O arquivo `requirements.txt` lista todas as bibliotecas necessárias para reproduzir o ambiente.)*
 
-## 🔑 Resultados (Atualize com Seus Valores)
+## 🔑 Resultados Quantitativos e Insights (Atualizados)
+
+A Regressão Logística foi o modelo com o melhor poder de discriminação geral (maior ROC AUC), mas o Random Forest forneceu o insight de negócio crucial sobre a importância das variáveis.
 
 | Métrica | Regressão Logística (Baseline) | Random Forest (Melhor Desempenho) | Comentário |
 | :--- | :--- | :--- | :--- |
-| **ROC AUC** | 0.8359 | **[Valor da Célula 11]** | Excelente poder discriminatório. |
-| **F1-Score (Churn=1)** | 0.61 | **[Valor da Célula 11]** | Métrica chave para dados desbalanceados. |
-| **Recall (Churn=1)** | 0.57 | **[Valor da Célula 11]** | Indica a capacidade de capturar clientes que vão sair. |
+| **ROC AUC** | **0.8359** | **0.8111** | O *baseline* teve maior poder de discriminação, mas ambos são fortes (> 0.80). |
+| **F1-Score (Churn=1)** | **0.61** | **0.54** | F1-Score da Regressão Logística foi superior, indicando um melhor equilíbrio entre Precisão e Recall neste caso. |
+| **Recall (Churn=1)** | 0.57 | 0.48 | Capacidade do modelo de identificar clientes que saíram. |
 
-### Top 3 Fatores de Risco (Feature Importance):
+### Top 3 Fatores de Risco (Feature Importance - Modelo Random Forest):
 
-1.  **[1ª Feature da Célula 12]**
-2.  **[2ª Feature da Célula 12]**
-3.  **[3ª Feature da Célula 12]**
+A análise do Random Forest identificou os fatores de maior impacto no Churn:
+
+1.  **TotalCharges** (0.143): O valor total gasto pelo cliente.
+2.  **tenure** (0.129): O tempo em meses que o cliente permaneceu na empresa.
+3.  **MonthlyCharges** (0.121): O valor da cobrança mensal.
+
+**Insight de Negócio:** As três variáveis numéricas que representam o **Valor de Vida do Cliente (CLV)** e a **Longevidade** são os preditores mais fortes de rotatividade. Clientes que estão na empresa há pouco tempo ou que têm baixo CLV são de altíssimo risco.
